@@ -1,0 +1,88 @@
+<html>
+<head>
+<title> Aleksander Wdowicki </title>
+</head>
+Zadania wykonał <h2 style="color:orange"> Aleksander Wdowicki </h2>
+<body>
+<script>
+function oblicz(){
+let dlug=document.getElementById("dlug").value
+let szer=document.getElementById("szer").value
+let sufitek=15
+if (dlug=="" || szer=="") document.getElementById("wynik1").innerHTML="musisz podać wszystkie dane"
+else if (dlug<=0 ||szer<=0) document.getElementById("wynik1").innerHTML="wartosci nie moga byc ujemne lub rowne 0"
+else{
+if(document.getElementById("sufit").checked==true){
+let wys=2.7
+let powierzchniap=dlug*szer*wys
+document.getElementById("wynik1").innerHTML="powierzchnia malowania obliczona z podanych wymiarów to:"+powierzchniap.toFixed(2)+"m<sup>2</sup>."
+let kosztm=powierzchniap*8+sufitek
+document.getElementById("wynik2").innerHTML="cena malowania tej powierzchni to: "+kosztm.toFixed(2)+" złotych."
+}
+else{
+let wys=2.7
+let powierzchniap=dlug*szer*wys
+document.getElementById("wynik1").innerHTML="powierzchnia malowania obliczona z podanych wymiarów to: "+powierzchniap.toFixed(2)+"m<sup>2</sup>."
+let kosztm=powierzchniap*8
+document.getElementById("wynik2").innerHTML="cena malowania tej powierzchni to: "+kosztm.toFixed(2)+" złotych."
+}
+}
+}
+function waluty(){
+let kwotazl=document.getElementById("kwotazl").value
+let opcja=document.getElementById("walutka").selectedIndex
+let kolorek=document.getElementById("kolorek").value
+if(kwotazl=="") document.getElementById("wynik4").innerHTML="musisz podać kwote"
+else if(kwotazl<=0) document.getElementById("wynik4").innerHTML="dane nie moga byc mniejsze lub rowne 0"
+else{
+if(opcja==0){
+let euro=kwotazl/4.32
+document.getElementById("wynik4").innerHTML=""+kwotazl+" złotych to jest "+euro.toFixed(2)+" EURO. "
+}
+if(opcja==1){
+let dolar=kwotazl/3.83
+document.getElementById("wynik4").innerHTML=""+kwotazl+" złotych to jest "+dolar.toFixed(2)+" DOLARÓW. "
+}
+if(opcja==2){
+let frank=kwotazl/3.79
+document.getElementById("wynik4").innerHTML=""+kwotazl+" złotych to jest "+frank.toFixed(2)+" FRANKÓW. "
+}
+}
+}
+</script>
+<form name="formularz">
+<hr><hr><hr> <h1 style="color:blue"> Zadanie pierwsze: </h1><hr>
+Teks wyświetl w tej wielkości:<br>
+mały <input type="radio" id="w1" name="wielkosc"/><br>
+średni <input type="radio" id="w2" name="wielkosc"/><br>
+duży <input type="radio" id="w3" name="wielkosc"/><br>
+podaj dlugość pokoju (1 wymiar): <input type="number" id="dlug" style="background-color:lightblue"/><br>
+podaj szerokość pokoju (2 wymiar): <input type="number" id="szer" style="background-color:lightgrey"/><br>
+<input type="button" value="oblicz" onclick="oblicz()"/><br>
+czy liczyć sufit do kosztów malowania:<input type="checkbox" id="sufit"/> TAK
+<h3 id="wynik1"></h3>
+<h3 id="wynik2"></h3>
+<h3 id="wynik3"></h3>
+</form>
+<form name="formularz2">
+<hr><hr><hr> <h1 style="color:red"> Zadanie drugie: </h1><hr>
+Podaj kwotę w złotówkach: <input type="number" id="kwotazl"/><br>
+Wybierz walutę, na którą chcesz przeliczyć złotówki: <br>
+<select id="walutka" size="3" style="background-color:lightblue">
+<option>EURO</option>
+<option>DOLAR</option>
+<option>FRANK</option>
+</select><br>
+<input type="color" id="kolorek"/>
+<input type="button" value="przelicz" onclick="waluty()"/>
+
+<h3 id="wynik4"></h3>
+<h3 id="wynik5"></h3>
+<hr><hr><hr>
+
+
+</form>
+</body>
+
+
+</html>
